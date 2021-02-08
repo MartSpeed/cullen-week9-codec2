@@ -30,9 +30,24 @@ function submitJoke() {
 
   // set the append.() method to a variable
   // append the destination to the DOM
-  let jokePoster = $('#outputDiv').append(`<li>
-  ${whoseJokeInput} ${questionInput} ${punchLineInput}
-  </li>`);
+  // $('#outputDiv').append(`<li>
+  // ${whoseJokeInput} ${questionInput} ${punchLineInput}
+  // </li>`);
+
+  // GET INCANTATION
+  $.ajax({
+    url: '/allJokes',
+    method: 'GET',
+  }).then(function (response) {
+    console.log('submitJoke response', response);
+
+    for (let joke of jokes) {
+      joke = $('#outputDiv').append(`
+      <li>
+      ${joke.punchLineInput}
+      </li>`);
+    }
+  });
 }
 
 /**
