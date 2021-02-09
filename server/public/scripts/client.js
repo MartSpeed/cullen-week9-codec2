@@ -40,11 +40,13 @@ function submitJoke() {
     method: 'GET',
   }).then(function (response) {
     console.log('submitJoke response', response);
+    console.log('this is jokes:', jokes);
+    console.log('this is joke', joke);
 
     for (let joke of jokes) {
       joke = $('#outputDiv').append(`
       <li>
-      ${joke.punchLineInput}
+      ${jokes[joke]}
       </li>`);
     }
   });

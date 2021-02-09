@@ -5,8 +5,9 @@ const PORT = 5000;
 
 // use bodyParser.urlencoded throughout the app with this:
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.json());
 
-let jokes = [
+let _jokes = [
   {
     whoseJoke: 'Danny',
     jokeQuestion: 'Why do scuba divers fall backwards out of boats?',
@@ -42,7 +43,13 @@ app.listen(PORT, () => {
 }); // end spin up server
 
 // GET INCANTATION
-app.get('/allJokes', function (request, response) {
-  console.log('GET /allJokes');
-  response.send(jokes);
+// app.get('/allJokes', function (request, response) {
+//   console.log('allJokes GET test');
+//   console.log('this is the server get jokes', _jokes);
+//   response.send(_jokes);
+// });
+
+app.post('/allJokes', function (request, response) {
+  console.log('allJokes POST', request);
+  response.sendStatus(200);
 });
