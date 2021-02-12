@@ -51,6 +51,6 @@ app.get('/allJokes', function (request, response) {
 });
 
 app.post('/allJokes', function (request, response) {
-  console.log('allJokes POST', request);
+  console.log('allJokes POST', request.body);
   response.sendStatus(200);
 });
