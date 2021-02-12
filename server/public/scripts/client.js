@@ -7,8 +7,11 @@ $(document).ready(onReady);
 function onReady() {
   console.log('DOM ready');
 
-  // click event for #addJokeButton
-  $('#addJokeButton').on('click', submitJoke);
+  // summon premade jokes from the joke array
+  getJokes();
+  // click event for the addJokes button
+  // called inside of the submitJokes butotn
+  $(document).on('click', submitJoke);
 }
 
 let jokeInputArray = [];
@@ -27,7 +30,6 @@ function submitJoke() {
   let whoseJokeInput = $('#whoseJokeIn').val();
   let questionInput = $('#questionIn').val();
   let punchLineInput = $('#punchlineIn').val();
-  getJokes();
 }
 // function to get the jokes from the database and display them on the DOM
 function getJokes() {
@@ -56,6 +58,10 @@ function getJokes() {
 }
 
 /**
- * NAME: save joke input
- * DESCRIPTION: save
+ * NAME: addJoke() function
+ * DESCRIPTION: save the inputs from the DOM
+ * input them into the server
+ * log the new inputs in the DOM
  */
+// this function is called when a button is clicked
+function addJoke() {}
