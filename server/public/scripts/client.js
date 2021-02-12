@@ -10,8 +10,8 @@ function onReady() {
   // summon premade jokes from the joke array
   getJokes();
   // click event for the addJokes button
-  // called inside of the submitJokes butotn
-  $(document).on('click', submitJoke);
+  // called inside of the submitJokes button
+  $('#addJokeButton').on('click', submitJoke);
 }
 
 let jokeInputArray = [];
@@ -25,11 +25,6 @@ let jokeInputArray = [];
  */
 function submitJoke() {
   console.log(`insertJoke has been clicked ${spiderMan}`);
-
-  // set jQuery values to variables
-  let whoseJokeInput = $('#whoseJokeIn').val();
-  let questionInput = $('#questionIn').val();
-  let punchLineInput = $('#punchlineIn').val();
 }
 // function to get the jokes from the database and display them on the DOM
 function getJokes() {
@@ -64,4 +59,26 @@ function getJokes() {
  * log the new inputs in the DOM
  */
 // this function is called when a button is clicked
-function addJoke() {}
+// when the button is clicked
+// the information from HTML will be stored in the server
+// and reflected in the DOM
+function addJoke() {
+  //create and object that has the information to send to the DOM
+  const domJoke = {
+    // set jQuery values to variables
+    whoseJokeInput: $('#whoseJokeIn').val(),
+    questionInput: $('#questionIn').val(),
+    punchLineInput: $('#punchlineIn').val(),
+  };
+
+  // add our new joke to the array in the server
+  // POST INCANTATION
+  // from the DOM to the server
+  $.ajax({
+    type: 'POST',
+    url: '/allJokes',
+    data: domJoke,
+  }).then(function (response) {
+    console.log('POST response', response);
+  });
+}
