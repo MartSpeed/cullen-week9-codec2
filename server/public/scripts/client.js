@@ -22,7 +22,7 @@ function onReady() {
  * [ ] the empty array will append the information to the DOM
  */
 function submitJoke() {
-  console.log(`insertJoke has been clicked ${spiderMan}`);
+  //console.log(`insertJoke has been clicked ${spiderMan}`);
   addJoke();
 }
 // function to get the jokes from the database and display them on the DOM
