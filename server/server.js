@@ -46,7 +46,7 @@ app.listen(PORT, () => {
 // the response to the server request will be the array variable set to _jokes
 app.get('/allJokes', function (request, response) {
   //console.log('allJokes GET test');
-  //console.log('this is the server get jokes', _jokes);
+  console.log('this is the server get jokes', _jokes);
   response.send(_jokes);
 });
 

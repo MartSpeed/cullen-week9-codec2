@@ -46,12 +46,12 @@ function getJokes() {
     // this is the joke response
     console.log('submitJoke response', response);
 
-    // for (let joke of jokes) {
-    //   joke = $('#outputDiv').append(`
-    //   <li>
-    //   ${jokes[joke]}
-    //   </li>`);
-    // }
+    for (let joke of response) {
+      $('#outputDiv').append(`
+      <li>
+      ${joke.whoseJoke} ${joke.jokeQuestion} ${joke.punchLine}
+      </li>`);
+    }
   });
 }
 
