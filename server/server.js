@@ -43,11 +43,12 @@ app.listen(PORT, () => {
 }); // end spin up server
 
 // GET INCANTATION
-// app.get('/allJokes', function (request, response) {
-//   console.log('allJokes GET test');
-//   console.log('this is the server get jokes', _jokes);
-//   response.send(_jokes);
-// });
+// the response to the server request will be the array variable set to _jokes
+app.get('/allJokes', function (request, response) {
+  //console.log('allJokes GET test');
+  //console.log('this is the server get jokes', _jokes);
+  response.send(_jokes);
+});
 
 app.post('/allJokes', function (request, response) {
   console.log('allJokes POST', request);

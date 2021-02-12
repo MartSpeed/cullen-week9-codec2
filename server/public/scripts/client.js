@@ -8,7 +8,7 @@ function onReady() {
   console.log('DOM ready');
 
   // click event for #addJokeButton
-  $(document).on('click', submitJoke);
+  $('#addJokeButton').on('click', submitJoke);
 }
 
 let jokeInputArray = [];
@@ -27,6 +27,11 @@ function submitJoke() {
   let whoseJokeInput = $('#whoseJokeIn').val();
   let questionInput = $('#questionIn').val();
   let punchLineInput = $('#punchlineIn').val();
+  getJokes();
+}
+// function to get the jokes from the database and display them on the DOM
+function getJokes() {
+  // GET INCANTATION
 
   // set the append.() method to a variable
   // append the destination to the DOM
@@ -34,21 +39,19 @@ function submitJoke() {
   // ${whoseJokeInput} ${questionInput} ${punchLineInput}
   // </li>`);
 
-  // GET INCANTATION
   $.ajax({
     url: '/allJokes',
     method: 'GET',
   }).then(function (response) {
+    // this is the joke response
     console.log('submitJoke response', response);
-    console.log('this is jokes:', jokes);
-    console.log('this is joke', joke);
 
-    for (let joke of jokes) {
-      joke = $('#outputDiv').append(`
-      <li>
-      ${jokes[joke]}
-      </li>`);
-    }
+    // for (let joke of jokes) {
+    //   joke = $('#outputDiv').append(`
+    //   <li>
+    //   ${jokes[joke]}
+    //   </li>`);
+    // }
   });
 }
 
