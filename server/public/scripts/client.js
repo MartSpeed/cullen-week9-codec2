@@ -41,7 +41,8 @@ function getJokes() {
   }).then(function (response) {
     // this is the joke response
     console.log('submitJoke response', response);
-
+    // this will empty the joke list and only return the appended object
+    $('#outputDiv').empty();
     for (let joke of response) {
       $('#outputDiv').append(`
       <li>
@@ -82,6 +83,18 @@ function addJoke() {
     data: domJoke,
   }).then(function (response) {
     console.log('POST response', response);
+    clearJokeInputs();
     getJokes();
   });
+}
+
+/**
+ * NAME: clearJokeInput()
+ * DESCRIPTION: clears the joke information after it ha been
+ * submitted to the DOM
+ */
+function clearJokeInputs() {
+  $('#whoseJokeIn').val('');
+  $('#questionIn').val('');
+  $('#punchlineIn').val('');
 }
