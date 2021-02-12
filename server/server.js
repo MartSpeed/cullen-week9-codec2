@@ -50,7 +50,11 @@ app.get('/allJokes', function (request, response) {
   response.send(_jokes);
 });
 
+// POST INCANTATION
+// from the client input and sending it to the server
 app.post('/allJokes', function (request, response) {
   console.log('allJokes POST', request.body);
+  _jokes.push(request.body);
+  // using a sendStatus(200) this will send us back an OK response in the terminal
   response.sendStatus(200);
 });

@@ -8,16 +8,14 @@ function onReady() {
   console.log('DOM ready');
 
   // summon premade jokes from the joke array
-  getJokes();
+  $(document).ready(getJokes);
   // click event for the addJokes button
   // called inside of the submitJokes button
   $('#addJokeButton').on('click', submitJoke);
 }
 
-let jokeInputArray = [];
-
 /**
- * NAME: insertJoke() function
+ * NAME: submitJoke() function
  * DESCRIPTION: using the #addJokeButton button id as a click event
  * [x] when this button is clicked, do something
  * [ ] this event will push the jokes into an empty array
@@ -47,8 +45,9 @@ function getJokes() {
     for (let joke of response) {
       $('#outputDiv').append(`
       <li>
-      ${joke.whoseJoke} ${joke.jokeQuestion} ${joke.punchLine}
-      </li>`);
+        ${joke.whoseJoke} ${joke.jokeQuestion} ${joke.punchLine}
+      </li>
+      `);
     }
   });
 }
@@ -58,28 +57,31 @@ function getJokes() {
  * DESCRIPTION: save the inputs from the DOM
  * input them into the server
  * log the new inputs in the DOM
+ * this function is called when a button is clicked
+ * when the button is clicked
+ * the information from HTML will be stored in the server
+ * and reflected in the DOM
  */
-// this function is called when a button is clicked
-// when the button is clicked
-// the information from HTML will be stored in the server
-// and reflected in the DOM
 function addJoke() {
   //create and object that has the information to send to the DOM
   const domJoke = {
     // set jQuery values to variables
-    whoseJokeInput: $('#whoseJokeIn').val(),
-    questionInput: $('#questionIn').val(),
-    punchLineInput: $('#punchlineIn').val(),
+    whoseJoke: $('#whoseJokeIn').val(),
+    jokeQuestion: $('#questionIn').val(),
+    punchLine: $('#punchlineIn').val(),
   };
 
-  // add our new joke to the array in the server
-  // POST INCANTATION
-  // from the DOM to the server
+  /**
+   * add our new joke to the array in the server
+   * POST INCANTATION
+   * from the DOM to the server
+   */
   $.ajax({
     type: 'POST',
     url: '/allJokes',
     data: domJoke,
   }).then(function (response) {
     console.log('POST response', response);
+    getJokes();
   });
 }
