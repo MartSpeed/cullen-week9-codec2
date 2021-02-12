@@ -25,6 +25,7 @@ let jokeInputArray = [];
  */
 function submitJoke() {
   console.log(`insertJoke has been clicked ${spiderMan}`);
+  addJoke();
 }
 // function to get the jokes from the database and display them on the DOM
 function getJokes() {
